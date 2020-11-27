@@ -1,42 +1,16 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-
+import Counter from './Counter';
 import './styles.scss';
 
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0,
-    };
+const Application = () => {
+  return (
+    <main className="Application">
+      <section className="Counters">
+        <Counter max={15} step={5} />
+      </section>
+    </main>
+  );
+};
 
-    this.increment = this.increment.bind(this);
-    this.decrement = this.decrement.bind(this);
-    this.reset = this.reset.bind(this);
-  }
-
-  increment() {
-    this.setState({ count: this.state.count + 1 });
-  }
-  decrement() {
-    this.setState({ count: this.state.count - 1 });
-  }
-  reset() {
-    this.setState({ count: 0 });
-  }
-  render() {
-    const { count } = this.state;
-    return (
-      <main className="Counter">
-        <p className="count">{count}</p>
-        <section className="controls">
-          <button onClick={this.increment}>Increment</button>
-          <button onClick={this.decrement}>Decrement</button>
-          <button onClick={this.reset}>Reset</button>
-        </section>
-      </main>
-    );
-  }
-}
-
-render(<Counter />, document.getElementById('root'));
+render(<Application />, document.getElementById('root'));
